@@ -1,0 +1,19 @@
+Working with VPC- NACL and Security groups
+
+Create a VPC - select VPC and more 2 subnets and 2 availability zones
+
+Create EC2 instance – on Ubuntu machine Edit network settings – attach the VPC that was created above
+
+Select a public subnet and enable Auto –assign public IP
+Launch instance
+Connect ec2 instance on Mobaxterm
+
+Update all packages – sudo apt update
+
+Install python application – python3 –m http.server 8000
+
+Edit inbound security rules under ec2 instance – to allow port 8000 image
+
+Edit inbound rules in NACL- lower rule number gets higher priority image
+
+http://public_ip_of_ec2:8000 – redirected to the page in the below screenshot. This is a simple python3 application. image
