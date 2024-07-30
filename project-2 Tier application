@@ -1,4 +1,66 @@
-AWS project used in production
+****AWS Project - VPC with a 2 tier application****
 
-1) Create VPC
+![image](https://github.com/user-attachments/assets/b237ead1-3c8a-4719-b721-6e6d7d4cad89)
+
+1) Create VPC - VPC and more
+![image](https://github.com/user-attachments/assets/116c61bc-99c8-462e-8155-dc3f78610476)
+
+2)	Create auto- scaling group : open ec2 instance > auto scaling group > create launch template
+![image](https://github.com/user-attachments/assets/9d203010-22b4-49cb-9b96-c54092c76d24)
+
+3)	Choose the vpc that we just created. Make sure ssh, tcp (port 8000) are available
+![image](https://github.com/user-attachments/assets/74e01b37-cf70-4a04-b1e9-8cdada9a77d7)
+![image](https://github.com/user-attachments/assets/b8d8628d-7038-4560-823f-19d70c4a5da4)
+
+4)	Create auto scaling group using the template created above.
+![image](https://github.com/user-attachments/assets/310936a7-9d0c-40cf-ab25-72bbd185e478)
+
+5)	Provide the vpc and the private subnets
+![image](https://github.com/user-attachments/assets/56cfc679-6d32-4d85-8173-617285fb3d0b)
+![image](https://github.com/user-attachments/assets/40a495f5-2467-47fd-8300-3e6d1616e4f1)
+
+6)	Desired capacity-2 | Min -2| Max – 4 : Size of auto scaling groups
+![image](https://github.com/user-attachments/assets/d22e7548-8e54-466c-9fc6-e5eed51b2e2d)
+
+Create auto scaling group leaving the rest in their default values.
+![image](https://github.com/user-attachments/assets/9ce8aa4d-8e80-4166-8744-a7646457dd32)
+
+There are 2 instances created in the 2 private subnets
+![image](https://github.com/user-attachments/assets/2c0b7e4f-5e04-4306-acd0-0c6369ea83cd)
+
+7)	2 ec2 instances are created without their public ip because they are in the private subnet
+8)	Hence create an ec2 instance for bastion host
+![image](https://github.com/user-attachments/assets/012d9e36-46a3-4bf7-933c-acbbf3aac962)
+
+9)	Copy the pem file of private ec2 instances in the bastion host using command :
+scp -i "location of bastion host key-value pair" "location of auto scaling group key value pair" ubuntu@8public ip of bastion host:/home/ubuntu
+10)	 Connect to the bastion host using terminal
+11)	Check if the pem file of private instance is present using ls
+12)	Log into private subnet in the bastion host
+13)	Install a python application on port 8000
+14)	Create a target group
+![image](https://github.com/user-attachments/assets/c193cad0-f275-48df-bbbb-ad36f4ced840)
+![image](https://github.com/user-attachments/assets/574d2a6c-74b1-4bcf-9698-f6ab5ec13270)
+
+15)	Create application load balancer-
+![image](https://github.com/user-attachments/assets/8d0098d5-1809-4a07-8e10-58a3bc5393aa)
+![image](https://github.com/user-attachments/assets/e23b3fb6-5798-4807-b202-e1a1816ba0a3)
+![image](https://github.com/user-attachments/assets/0155eed0-8410-4d77-ac8d-a2bbc559119b)
+Make sure inbound rules allow port 8000
+Use the dns name link and access application from external world.
+![image](https://github.com/user-attachments/assets/4e32a60c-d96d-4417-ba3d-e9d3abbd1521)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
